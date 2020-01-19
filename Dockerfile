@@ -10,7 +10,7 @@ COPY . ./
 RUN dotnet publish -c Release -o out
 
 # build runtime image
-FROM microsoft/dotnet:2.2-aspnetcore-runtime
+FROM microsoft/dotnet:2.2-sdk
 WORKDIR /app
-COPY --from=build-env /app/gcpt/out .
-ENTRYPOINT ["dotnet", "PlaceBetService/PlaceBetService.dll"]
+COPY --from=build-env /app/PlaceBetService/out .
+ENTRYPOINT ["dotnet", "PlaceBetService.dll"]
