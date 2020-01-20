@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Threading;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 
@@ -25,8 +26,7 @@ namespace PlaceBetService
                     };
                     channel.BasicConsume("PlaceBet", true, consumer);
 
-                    Console.WriteLine(" Press [enter] to exit.");
-                    Console.ReadLine();
+                    Thread.Sleep(100000);
                 }
             }
         }
